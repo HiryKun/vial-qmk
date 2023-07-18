@@ -1,0 +1,72 @@
+{
+    "manufacturer": "HiryKun",
+    "keyboard_name": "QAZ",
+    "maintainer": "HiryKun",
+    "bootloader": "stm32duino",
+    "diode_direction": "COL2ROW",
+    "features": {
+        "bootmagic": true,
+        "command": false,
+        "console": false,
+        "extrakey": true,
+        "mousekey": true,
+        "nkro": true
+    },
+    "matrix_pins": {
+        "cols": ["B5", "B6", "B9", "B8", "A4", "B7", "A5", "A15", "A6", "B3"],
+        "rows": ["B0", "A7", "A3", "B4"]
+    },
+    "processor": "STM32F103",
+    "url": "https://space.bilibili.com/50496994",
+    "usb": {
+        "device_version": "1.0.0",
+        "pid": "0x0A30",
+        "vid": "0xA743"
+    },
+    "layouts": {
+        "LAYOUT": {
+            "layout": [
+                {"matrix": [0,0], "label":"0,0", "x":0, "y":0}, 
+                {"matrix": [0,1], "label":"0,1", "x":1, "y":0}, 
+                {"matrix": [0,2], "label":"0,2", "x":2, "y":0}, 
+                {"matrix": [0,3], "label":"0,3", "x":3, "y":0}, 
+                {"matrix": [0,4], "label":"0,4", "x":4, "y":0}, 
+                {"matrix": [0,5], "label":"0,5", "x":5, "y":0}, 
+                {"matrix": [0,6], "label":"0,6", "x":6, "y":0}, 
+                {"matrix": [0,7], "label":"0,7", "x":7, "y":0}, 
+                {"matrix": [0,8], "label":"0,9", "x":8, "y":0}, 
+                {"matrix": [0,9], "label":"0,9", "x":9, "y":0, "w":1.25}, 
+
+                {"matrix": [1,0], "label":"1,0", "x":0, "y":1, "w":1.25}, 
+                {"matrix": [1,1], "label":"1,1", "x":1.25, "y":1}, 
+                {"matrix": [1,2], "label":"1,2", "x":2.25, "y":1}, 
+                {"matrix": [1,3], "label":"1,3", "x":3.25, "y":1}, 
+                {"matrix": [1,4], "label":"1,4", "x":4.25, "y":1}, 
+                {"matrix": [1,5], "label":"1,5", "x":5.25, "y":1}, 
+                {"matrix": [1,6], "label":"1,6", "x":6.25, "y":1}, 
+                {"matrix": [1,7], "label":"1,7", "x":7.25, "y":1}, 
+                {"matrix": [1,8], "label":"1,8", "x":8.25, "y":1}, 
+                {"matrix": [1,9], "label":"1,9", "x":9.25, "y":1}, 
+
+                {"matrix": [2,0], "label":"2,0", "x":0, "y":2, "w":1.75}, 
+                {"matrix": [2,1], "label":"2,1", "x":1.75, "y":2}, 
+                {"matrix": [2,2], "label":"2,2", "x":2.75, "y":2}, 
+                {"matrix": [2,3], "label":"2,3", "x":3.75, "y":2}, 
+                {"matrix": [2,4], "label":"2,4", "x":4.75, "y":2}, 
+                {"matrix": [2,5], "label":"2,5", "x":5.75, "y":2}, 
+                {"matrix": [2,6], "label":"2,6", "x":6.75, "y":2}, 
+                {"matrix": [2,7], "label":"2,7", "x":7.75, "y":2}, 
+                {"matrix": [2,9], "label":"2,9", "x":8.75, "y":2, "w":1.5}, 
+
+                {"matrix": [3,0], "label":"3,0", "x":0, "y":3}, 
+                {"matrix": [3,1], "label":"3,1", "x":1, "y":3}, 
+                {"matrix": [3,2], "label":"3,2", "x":2, "y":3}, 
+                {"matrix": [3,3], "label":"3,3", "x":3, "y":3, "w":2}, 
+                {"matrix": [3,5], "label":"3,5", "x":5, "y":3, "w":2.25}, 
+                {"matrix": [3,6], "label":"3,6", "x":7.25, "y":3}, 
+                {"matrix": [3,7], "label":"3,7", "x":8.25, "y":3}, 
+                {"matrix": [3,9], "label":"3,9", "x":9.25, "y":3}
+            ]
+        }
+    }
+}
