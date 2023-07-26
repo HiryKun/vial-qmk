@@ -1,10 +1,6 @@
 {
     "manufacturer": "HiryKun",
-<<<<<<< Updated upstream
-    "keyboard_name": "rs_pad",
-=======
     "keyboard_name": "RS PAD",
->>>>>>> Stashed changes
     "maintainer": "HiryKun",
     "bootloader": "stm32duino",
     "diode_direction": "COL2ROW",
