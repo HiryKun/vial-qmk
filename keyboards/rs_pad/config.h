@@ -19,8 +19,11 @@
 //#define NO_ACTION_TAPPING
 //#define NO_ACTION_ONESHOT
 
+<<<<<<< Updated upstream
 #define DYNAMIC_KEYMAP_LAYER_COUNT 5
 
+=======
+>>>>>>> Stashed changes
 #define BOOTMAGIC_LITE_ROW 0
 #define BOOTMAGIC_LITE_COLUMN 3
 
@@ -29,7 +32,10 @@
 #define WS2812_DMA_STREAM STM32_DMA1_STREAM2
 #define WS2812_DMA_CHANNEL 2
 #define RGB_MATRIX_LED_COUNT 15
+<<<<<<< Updated upstream
 #define DRIVER_LED_TOTAL 15
+=======
+>>>>>>> Stashed changes
 #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
 #define RGB_MATRIX_KEYPRESSES
 
@@ -48,4 +54,9 @@
 #define OLED_TIMEOUT 120000
 #define OLED_UPDATE_INTERVAL 50
 
+<<<<<<< Updated upstream
 #define NO_USB_STARTUP_CHECK
+=======
+#define NO_USB_STARTUP_CHECK
+#define RGB_DISABLE_WHEN_USB_SUSPENDED
+>>>>>>> Stashed changes
