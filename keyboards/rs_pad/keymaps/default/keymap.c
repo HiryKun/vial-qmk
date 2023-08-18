@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include QMK_KEYBOARD_H
-#include "quantum.h"
 
 extern audio_config_t audio_config;
 extern bool music_activated;
@@ -60,40 +59,41 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 #endif
 
 bool oled_task_user(void) {
-    // oled_write_raw_P(rice_shower, sizeof(rice_shower));
-    oled_write_P(PSTR("Layer:\n"), false);
-    switch (get_highest_layer(layer_state))
-    {
-    case 0:
-        oled_write_P(PSTR("Default\n"), false);
-        break;
-    case 1:
-        oled_write_P(PSTR("Fn\n"), false);
-        break;
-    case 2:
-        oled_write_P(PSTR("Audio&RGB\n"), false);
-        break;
-    case 3:
-        oled_write_P(PSTR("Music\n"), false);
-        break;
-    case 4:
-        oled_write_P(PSTR("Advance\n"), false);
-        break;
-    default:
-        oled_write_P(PSTR("Unknow\n"), false);
-        break;
-    }
+    if(timer_elapsed(oled_timeout_timer) < 5000) {
+        oled_write_P(PSTR("Layer:\n"), false);
+        switch (get_highest_layer(layer_state))
+        {
+        case 0:
+            oled_write_P(PSTR("Default\n"), false);
+            break;
+        case 1:
+            oled_write_P(PSTR("Fn\n"), false);
+            break;
+        case 2:
+            oled_write_P(PSTR("Audio&RGB\n"), false);
+            break;
+        case 3:
+            oled_write_P(PSTR("Music\n"), false);
+            break;
+        case 4:
+            oled_write_P(PSTR("Advance\n"), false);
+            break;
+        default:
+            oled_write_P(PSTR("Unknow\n"), false);
+            break;
+        }
 
-    if(audio_config.enable == 1) {
-        oled_write_P(PSTR("Audio "), false);
-        oled_write_P(audio_config.clicky_enable ? PSTR(" Clicky ") : PSTR("       "), false);
-        oled_write_P(music_activated ? PSTR(" Music") : PSTR("      "), false);
-    }
+        if(audio_config.enable == 1) {
+            oled_write_P(PSTR("Audio "), false);
+            oled_write_P(audio_config.clicky_enable ? PSTR(" Clicky ") : PSTR("       "), false);
+            oled_write_P(music_activated ? PSTR(" Music") : PSTR("      "), false);
+        }
 
-    led_t led_state = host_keyboard_led_state();
-    oled_write_P(led_state.num_lock ? PSTR("\nNUM ") : PSTR("\n    "), false);
-    oled_write_P(led_state.caps_lock ? PSTR("CAP ") : PSTR("    "), false);
-    oled_write_P(led_state.scroll_lock ? PSTR("SCR ") : PSTR("    "), false);
-    
+        led_t led_state = host_keyboard_led_state();
+        oled_write_P(led_state.num_lock ? PSTR("\nNUM ") : PSTR("\n    "), false);
+        oled_write_P(led_state.caps_lock ? PSTR("CAP ") : PSTR("    "), false);
+        oled_write_P(led_state.scroll_lock ? PSTR("SCR ") : PSTR("    "), false);
+    }
+    else oled_off();
     return false;
 }

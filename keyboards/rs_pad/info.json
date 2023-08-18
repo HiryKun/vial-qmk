@@ -122,5 +122,8 @@
     "ws2812": {
         "driver": "pwm",
         "pin": "A3"
+    },
+    "mouse_key": {
+        "enabled" : true
     }
 }

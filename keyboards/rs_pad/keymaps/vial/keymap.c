@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include QMK_KEYBOARD_H
-#include "quantum.h"
 
 extern audio_config_t audio_config;
 extern bool music_activated;
@@ -49,6 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 };
 
+
 #if defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [0] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
@@ -60,7 +60,6 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 #endif
 
 bool oled_task_user(void) {
-    // oled_write_raw_P(rice_shower, sizeof(rice_shower));
     oled_write_P(PSTR("Layer:\n"), false);
     switch (get_highest_layer(layer_state))
     {
@@ -94,6 +93,6 @@ bool oled_task_user(void) {
     oled_write_P(led_state.num_lock ? PSTR("\nNUM ") : PSTR("\n    "), false);
     oled_write_P(led_state.caps_lock ? PSTR("CAP ") : PSTR("    "), false);
     oled_write_P(led_state.scroll_lock ? PSTR("SCR ") : PSTR("    "), false);
-    
+
     return false;
 }
