@@ -3,22 +3,6 @@
 
 #pragma once
 
-/*
- * Feature disable options
- *  These options are also useful to firmware size reduction.
- */
-
-/* disable debug print */
-//#define NO_DEBUG
-
-/* disable print */
-//#define NO_PRINT
-
-/* disable action features */
-//#define NO_ACTION_LAYER
-//#define NO_ACTION_TAPPING
-//#define NO_ACTION_ONESHOT
-
 #define BOOTMAGIC_LITE_ROW 0
 #define BOOTMAGIC_LITE_COLUMN 3
 
@@ -41,8 +25,8 @@
 
 #define I2C1_CLOCK_SPEED 400000
 #define I2C1_DUTY_CYCLE FAST_DUTY_CYCLE_2
-#define OLED_SCROLL_TIMEOUT 60000
-#define OLED_TIMEOUT 120000
+#define OLED_SCROLL_TIMEOUT 120000
+#define OLED_TIMEOUT 180000
 #define OLED_UPDATE_INTERVAL 50
 
 #define NO_USB_STARTUP_CHECK
