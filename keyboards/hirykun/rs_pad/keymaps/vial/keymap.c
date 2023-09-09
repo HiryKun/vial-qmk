@@ -3,8 +3,15 @@
 
 #include QMK_KEYBOARD_H
 
+#define MACRO_DELAY 10
+
 extern audio_config_t audio_config;
 extern bool music_activated;
+bool macro_running = false;
+uint16_t macro_timer = 0;
+enum my_keycodes {
+    MA_CYC = SAFE_RANGE
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
@@ -17,7 +24,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [1] = LAYOUT(
                                    TO(2),
-        GU_TOGG, _______, _______, _______,
+        MA_CYC , _______, _______, _______,
         _______, _______, _______, _______,
         _______, _______, _______,
         _______, _______, _______, _______
@@ -48,6 +55,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 };
 
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode)
+    {
+    case MA_CYC:
+        if(record->event.pressed) {
+            macro_running = true;
+            macro_timer = timer_read();
+        }
+        else {
+            macro_running = false;
+        }
+        return false;
+    
+    default:
+        return true;
+    }
+}
+
+void matrix_scan_user(void) {
+    if(macro_running == true && timer_elapsed(macro_timer) > MACRO_DELAY) {
+        tap_code(KC_A);
+        macro_timer = timer_read();
+    }
+}
 
 #ifdef ENCODER_MAP_ENABLE
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
