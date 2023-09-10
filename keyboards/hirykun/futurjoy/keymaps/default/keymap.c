@@ -31,12 +31,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 			++buffer_top;
 			record_buffer[buffer_top] = keycode;
 			buffer_index[keycode] = buffer_top;
+            ++a_0_regitster;
 		}
 		else {
 			for(uint8_t operate_index = buffer_index[keycode]; operate_index <= buffer_top; ++operate_index) {
 				record_buffer[operate_index] = record_buffer[operate_index + 1];
 			}
 			--buffer_top;
+            --a_0_regitster;
 		}
 		return true;
 	}
@@ -53,11 +55,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 				record_buffer[operate_index] = record_buffer[operate_index + 1];
 			}
 			--buffer_top;
-			now_frame_enter = 0;
+            buffer_index[keycode] = 0;
 		}
 		return true;
 		break;
-	
+
 	default:
 		return true;
 		break;
@@ -77,7 +79,11 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 }
 
 bool oled_task_user(void) {
+    if(a_0_regitster == 0) now_frame_a_0 = 0;
+    if(buffer_index[KC_ENTER] == 0) now_frame_enter = 0;
 	oled_animation();
-	return false;
+    if(a_0_regitster != 0 && now_frame_a_0 < A_0_FRAME_NUM) ++now_frame_a_0;
+    if(buffer_index[KC_ENTER] != 0) ++now_frame_enter;
+    return false;
 }
 #endif
