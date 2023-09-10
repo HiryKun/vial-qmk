@@ -1,2 +1,7 @@
 # This file intentionally left blank
 MCU_LDSCRIPT = STM32F103xE
+ENCODER_MAP_ENABLE = yes
+OLED_ENABLE = yes
+OLED_DRIVER = SSD1306
+OLED_TRANSPORT = i2c
+REPEAT_KEY_ENABLE = yes

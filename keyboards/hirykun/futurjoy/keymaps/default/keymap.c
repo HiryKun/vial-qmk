@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include "oled_task.c"
 
 /*按键映射*/
 /*关于keymap和层的解读，详见 https://docs.qmk.fm/#/feature_layers 和 https://docs.qmk.fm/#/keymap */
@@ -24,10 +25,59 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };	//这里的分号一定不要忘记
 
-#if defined(ENCODER_MAP_ENABLE)
-const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
-    [0] = { ENCODER_CCW_CW(KC_VOLU, KC_VOLD) },
-    [1] = { ENCODER_CCW_CW(RGB_HUD, RGB_HUI) }
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+	if(keycode >= KC_A && keycode <= KC_0) {
+		if (record->event.pressed) {
+			++buffer_top;
+			record_buffer[buffer_top] = keycode;
+			buffer_index[keycode] = buffer_top;
+		}
+		else {
+			for(uint8_t operate_index = buffer_index[keycode]; operate_index <= buffer_top; ++operate_index) {
+				record_buffer[operate_index] = record_buffer[operate_index + 1];
+			}
+			--buffer_top;
+		}
+		return true;
+	}
+	switch (keycode)
+	{
+	case KC_ENTER:
+		if (record->event.pressed) {
+			++buffer_top;
+			record_buffer[buffer_top] = keycode;
+			buffer_index[keycode] = buffer_top;
+		}
+		else {
+			for(uint8_t operate_index = buffer_index[keycode]; operate_index <= buffer_top; ++operate_index) {
+				record_buffer[operate_index] = record_buffer[operate_index + 1];
+			}
+			--buffer_top;
+			now_frame_enter = 0;
+		}
+		return true;
+		break;
+	
+	default:
+		return true;
+		break;
+	}
+}
+
+#ifdef ENCODER_MAP_ENABLE
+const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
+    [0] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
+    [1] = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI) }
 };
 #endif
 
+#ifdef OLED_ENABLE
+oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+	return OLED_ROTATION_90; /*将屏幕旋转90度*/
+}
+
+bool oled_task_user(void) {
+	oled_animation();
+	return false;
+}
+#endif

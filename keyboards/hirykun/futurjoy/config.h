@@ -9,6 +9,15 @@
 #define WS2812_DMA_STREAM STM32_DMA2_STREAM1
 #define WS2812_DMA_CHANNEL 1
 
+#define I2C_DRIVER I2CD1
+#define I2C1_SCL_PIN B6
+#define I2C1_SDA_PIN B7
+#define I2C1_CLOCK_SPEED 400000
+#define I2C1_DUTY_CYCLE FAST_DUTY_CYCLE_2
+#define OLED_UPDATE_INTERVAL 20
+#define OLED_SCROLL_TIMEOUT 120000
+#define OLED_TIMEOUT 180000
+
 /*
  * Feature disable options
  *  These options are also useful to firmware size reduction.
