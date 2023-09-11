@@ -1,9 +1,22 @@
-#define FRAME_SIZE 512
-#define A_0_FRAME_NUM 2
+#define FRAME_SIZE 512  //帧大小
+#define A_0_FRAME_NUM 2 //数字及字母动画单动画帧数
 
+//数字及字母按键动画
 static const char PROGMEM a_0_animation[2][2][FRAME_SIZE] = {
     0
 };
+
+//Fn出现动画
+static const char PROGMEM fn_appear[][FRAME_SIZE] = {
+
+};
+
+//Fn消失动画
+static const char PROGMEM fn_disappear[][FRAME_SIZE] = {
+
+};
+
+//Enter按键动画
 static const char PROGMEM enter[][FRAME_SIZE] = {
 	{
 	// '1', 32x128px

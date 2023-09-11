@@ -79,11 +79,11 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 }
 
 bool oled_task_user(void) {
-    if(a_0_regitster == 0) now_frame_a_0 = 0;
-    if(buffer_index[KC_ENTER] == 0) now_frame_enter = 0;
-	oled_animation();
-    if(a_0_regitster != 0 && now_frame_a_0 < A_0_FRAME_NUM) ++now_frame_a_0;
-    if(buffer_index[KC_ENTER] != 0) ++now_frame_enter;
+    if(a_0_regitster == 0) now_frame_a_0 = 0;   //数字及字母动画重置
+    if(buffer_index[KC_ENTER] == 0) now_frame_enter = 0;    //Enter动画重置
+	oled_animation();   //主动画进程
+    if(a_0_regitster != 0 && now_frame_a_0 < A_0_FRAME_NUM) ++now_frame_a_0;    //数字及字母动画递增
+    if(buffer_index[KC_ENTER] != 0 && now_frame_enter < sizeof(enter) / FRAME_SIZE) ++now_frame_enter;  //Enter动画递增
     return false;
 }
 #endif
