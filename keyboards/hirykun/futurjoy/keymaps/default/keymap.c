@@ -79,11 +79,33 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 }
 
 bool oled_task_user(void) {
-    if(a_0_regitster == 0) now_frame_a_0 = 0;   //数字及字母动画重置
-    if(buffer_index[KC_ENTER] == 0) now_frame_enter = 0;    //Enter动画重置
+    if(a_0_regitster == 0)
+        now_frame_a_0 = 0;   //数字及字母动画重置
+
+    if(buffer_index[KC_ENTER] == 0)
+        now_frame_enter = 0;    //Enter动画重置
+
+    if(buffer_index[KC_ESC] == 0)
+        now_frame_esc = 0;
+
 	oled_animation();   //主动画进程
-    if(a_0_regitster != 0 && now_frame_a_0 < A_0_FRAME_NUM) ++now_frame_a_0;    //数字及字母动画递增
-    if(buffer_index[KC_ENTER] != 0 && now_frame_enter < sizeof(enter) / FRAME_SIZE) ++now_frame_enter;  //Enter动画递增
+
+    if(now_frame_default < MAX_FRAME(default_animation) - 1)
+        ++now_frame_default;    //默认动画递增
+    else now_frame_default = 0; //默认动画重置（循环）
+
+    if(a_0_regitster != 0 && now_frame_a_0 < MAX_FRAME(a_0_animation) - 1)
+        ++now_frame_a_0;    //数字及字母动画递增
+
+    if(buffer_index[KC_ENTER] != 0 && now_frame_enter < MAX_FRAME(enter) - 1)
+        ++now_frame_enter;  //Enter动画递增
+
+    if(buffer_index[KC_ESC] != 0) {
+        if(now_frame_esc < MAX_FRAME(esc) - 1)
+            ++now_frame_esc;    //Esc动画递增
+        else now_frame_esc = ESC_LOOP_START;    //Esc动画循环
+    }
+
     return false;
 }
 #endif

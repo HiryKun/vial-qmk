@@ -1,5 +1,12 @@
 #define FRAME_SIZE 512  //帧大小
 #define A_0_FRAME_NUM 2 //数字及字母动画单动画帧数
+#define ESC_LOOP_START 10   //Esc动画循环起始帧（第几帧）
+#define MAX_FRAME(animation) (sizeof(animation) / FRAME_SIZE)
+
+//默认循环动画
+static const char PROGMEM default_animation[][FRAME_SIZE] = {
+
+};
 
 //数字及字母按键动画
 static const char PROGMEM a_0_animation[2][2][FRAME_SIZE] = {
@@ -13,6 +20,11 @@ static const char PROGMEM fn_appear[][FRAME_SIZE] = {
 
 //Fn消失动画
 static const char PROGMEM fn_disappear[][FRAME_SIZE] = {
+
+};
+
+//Esc按键动画
+static const char PROGMEM esc[][FRAME_SIZE] = {
 
 };
 

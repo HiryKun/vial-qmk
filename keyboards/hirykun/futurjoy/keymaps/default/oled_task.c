@@ -11,7 +11,9 @@ bool fn_layer_appear = false;   //是否进入过Fn层
 
 //动画当前帧
 uint8_t now_frame_a_0 = 0;
+uint8_t now_frame_esc = 0;
 uint8_t now_frame_enter = 0;
+uint8_t now_frame_default = 0;
 uint8_t now_frame_fn_appear = 0;
 uint8_t now_frame_fn_disappear = 0;
 
@@ -19,7 +21,7 @@ void oled_animation(void) {
     //Fn出现动画
     if(get_highest_layer(layer_state) == 1) {
         oled_write_raw_P(fn_appear[now_frame_fn_appear], FRAME_SIZE);
-        if(now_frame_enter < sizeof(fn_appear) / FRAME_SIZE) ++now_frame_fn_appear;
+        if(now_frame_enter < sizeof(fn_appear) / FRAME_SIZE - 1) ++now_frame_fn_appear;
         now_frame_fn_disappear = 0;
         fn_layer_appear = true;
         return;
@@ -27,10 +29,18 @@ void oled_animation(void) {
     //Fn消失动画
     else if(fn_layer_appear) {
             oled_write_raw_P(fn_disappear[now_frame_fn_disappear], FRAME_SIZE);
-            if(now_frame_fn_disappear < sizeof(fn_disappear) / FRAME_SIZE) ++now_frame_fn_disappear;
-            else fn_layer_appear = false;
-            now_frame_fn_appear = 0;
+            if(now_frame_fn_disappear < sizeof(fn_disappear) / FRAME_SIZE - 1)
+                ++now_frame_fn_disappear;
+            else {
+                fn_layer_appear = false;
+                now_frame_fn_appear = 0;
+            }
             return;
+    }
+    //默认动画
+    if(buffer_top == 0) {
+        oled_write_raw_P(default_animation[now_frame_default], FRAME_SIZE);
+        return;
     }
     //数字及字母按键动画
     if(record_buffer[buffer_top] >= KC_A && record_buffer[buffer_top] <= KC_0) {
@@ -42,8 +52,10 @@ void oled_animation(void) {
         case KC_ENTER:
             oled_write_raw_P(enter[now_frame_enter], FRAME_SIZE);
             return;
+        case KC_ESC:
+            oled_write_raw_P(esc[now_frame_esc], FRAME_SIZE);
+            return;
         default:
-            if(buffer_top == 0) oled_write_raw_P(enter[0], FRAME_SIZE);
             return;
     }
 }
