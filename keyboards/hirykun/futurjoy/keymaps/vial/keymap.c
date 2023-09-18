@@ -1,9 +1,9 @@
 #include QMK_KEYBOARD_H
 #include "oled_task.c"
 
-enum my_keycodes {
+enum my_keycode {
   DP_MAIN = SAFE_RANGE,
-  DP_FUNC
+  DP_FUNC,
 };
 
 /*按键映射*/

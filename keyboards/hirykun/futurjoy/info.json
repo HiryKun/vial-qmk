@@ -1,6 +1,6 @@
 {
     "manufacturer": "HiryKun",
-    "keyboard_name": "RHODES75",
+    "keyboard_name": "FUTURJOY",
     "maintainer": "HiryKun",
     "bootloader": "stm32duino",
     "diode_direction": "COL2ROW",
@@ -157,12 +157,12 @@
             {"matrix": [5, 0], "x": 206, "y": 64, "flags": 4},
             {"matrix": [5, 0], "x": 220, "y": 64, "flags": 4}
         ],
-        "max_brightness": 200
+        "max_brightness": 170
     },
     "url": "https://space.bilibili.com/50496994",
     "usb": {
         "device_version": "0.0.1",
-        "pid": "0x2365",
+        "pid": "0x276E",
         "vid": "0xA743"
     },
     "layouts": {
@@ -243,7 +243,7 @@
                 {"label": "/", "matrix": [4, 10], "x": 11.25, "y": 4.25},
                 {"label": "Shift", "matrix": [4, 11], "x": 12.25, "y": 4.25, "w": 1.75},
                 {"label": "Up", "matrix": [4, 13], "x": 14.25, "y": 4.5},
-                
+
                 {"label": "Control", "matrix": [5, 0], "x": 0, "y": 5.25, "w": 1.25},
                 {"label": "Win", "matrix": [5, 1], "x": 1.25, "y": 5.25, "w": 1.25},
                 {"label": "Alt", "matrix": [5, 2], "x": 2.5, "y": 5.25, "w": 1.25},
