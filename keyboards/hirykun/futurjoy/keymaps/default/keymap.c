@@ -25,7 +25,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };	//这里的分号一定不要忘记
 
+void keyboard_post_init_user(void) {
+    action_timeout = timer_read32() + ACT_TIMEOUT;
+    caps_state = host_keyboard_led_state().caps_lock;
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    action_timeout = timer_read32() + ACT_TIMEOUT;
 	if(keycode >= KC_A && keycode <= KC_0) {
 		if (record->event.pressed) {
 			++buffer_top;
@@ -45,6 +51,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	switch (keycode)
 	{
 	case KC_ENTER:
+		if (record->event.pressed) {
+			++buffer_top;
+			record_buffer[buffer_top] = keycode;
+			buffer_index[keycode] = buffer_top;
+		}
+		else {
+			for(uint8_t operate_index = buffer_index[keycode]; operate_index <= buffer_top; ++operate_index) {
+				record_buffer[operate_index] = record_buffer[operate_index + 1];
+			}
+			--buffer_top;
+            buffer_index[keycode] = 0;
+		}
+		return true;
+		break;
+
+    case KC_ESC:
 		if (record->event.pressed) {
 			++buffer_top;
 			record_buffer[buffer_top] = keycode;
@@ -88,13 +110,9 @@ bool oled_task_user(void) {
     if(buffer_index[KC_ESC] == 0)
         now_frame_esc = 0;
 
-	oled_animation();   //主动画进程
+    oled_animation();   //主动画进程
 
-    if(now_frame_default < MAX_FRAME(default_animation) - 1)
-        ++now_frame_default;    //默认动画递增
-    else now_frame_default = 0; //默认动画重置（循环）
-
-    if(a_0_regitster != 0 && now_frame_a_0 < MAX_FRAME(a_0_animation) - 1)
+    if(a_0_regitster != 0 && now_frame_a_0 < MAX_FRAME(a_0_animation[0]) - 1)
         ++now_frame_a_0;    //数字及字母动画递增
 
     if(buffer_index[KC_ENTER] != 0 && now_frame_enter < MAX_FRAME(enter) - 1)
@@ -103,7 +121,7 @@ bool oled_task_user(void) {
     if(buffer_index[KC_ESC] != 0) {
         if(now_frame_esc < MAX_FRAME(esc) - 1)
             ++now_frame_esc;    //Esc动画递增
-        else now_frame_esc = ESC_LOOP_START;    //Esc动画循环
+        else now_frame_esc = ESC_LOOP_START - 1;    //Esc动画循环
     }
 
     return false;
