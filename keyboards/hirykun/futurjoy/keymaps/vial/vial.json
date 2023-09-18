@@ -1,14 +1,4 @@
 {
-    "customKeycodes": [
-        {"name": "MAIN",
-         "title": "Dislay the animation of A to 0",
-         "shortName": "DP_MAIN"
-        },
-        {"name": "FUNC",
-         "title": "Dislay the animation of function keys",
-         "shortname": "DP_FUNC"
-        }
-    ],
     "lighting": "vialrgb",
     "matrix": {
         "rows": 6,

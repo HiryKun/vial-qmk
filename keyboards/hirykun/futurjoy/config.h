@@ -16,6 +16,8 @@
 #define I2C1_DUTY_CYCLE FAST_DUTY_CYCLE_2
 #define OLED_UPDATE_INTERVAL 40
 
+#define WEAR_LEVELING_LOGICAL_SIZE 8192
+#define WEAR_LEVELING_BACKING_SIZE 16384
 /*
  * Feature disable options
  *  These options are also useful to firmware size reduction.
