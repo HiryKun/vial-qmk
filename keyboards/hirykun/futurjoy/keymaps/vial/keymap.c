@@ -69,6 +69,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 		keycode == KC_ESC	||
 		keycode == KC_SPACE ||
         keycode == KC_DELETE||
+        keycode == KC_BSPC  ||
         keycode == KC_LEFT  ||
         keycode == KC_RIGHT ||
         keycode == KC_UP    ||
@@ -138,7 +139,10 @@ bool oled_task_user(void) {
     if(buffer_index[KC_SPACE] == 0 && last_buffer != KC_SPACE)
         now_frame_space = 0;
     //Delete动画重置
-    if(buffer_index[KC_DELETE] == 0 && last_buffer != KC_DELETE)
+    if(buffer_index[KC_DELETE] == 0 &&
+    buffer_index[KC_BSPC] == 0   &&
+    last_buffer != KC_DELETE     &&
+    last_buffer != KC_BSPC)
         now_frame_delete = 0;
     //主动画进程
     oled_animation();
@@ -158,7 +162,9 @@ bool oled_task_user(void) {
     if( (buffer_index[KC_SPACE] != 0 || last_buffer == KC_SPACE) && now_frame_space < MAX_FRAME(space) - 1)
         ++now_frame_space;
     //Delete动画递增
-    if( (buffer_index[KC_DELETE] != 0 || last_buffer == KC_DELETE) && now_frame_delete < MAX_FRAME(delete) - 1)
+    if( (buffer_index[KC_DELETE] != 0 || buffer_index[KC_BSPC] != 0 ||
+    last_buffer == KC_DELETE || last_buffer == KC_BSPC) &&
+    now_frame_delete < MAX_FRAME(delete) - 1)
         ++now_frame_delete;
     //UP动画循环
     if(buffer_index[KC_UP] != 0 || last_buffer == KC_UP) {

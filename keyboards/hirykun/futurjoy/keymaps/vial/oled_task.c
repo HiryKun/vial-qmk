@@ -49,6 +49,7 @@ uint8_t now_frame_default = 0;
 uint8_t now_frame_transition = 0;
 
 void oled_animation(void) {
+    //淡入淡出动画
     if(last_animation != current_animation) {
         if(now_frame_transition == 2) {
             oled_write_raw_P(black_screen, FRAME_SIZE);
@@ -296,6 +297,13 @@ void oled_animation(void) {
                     oled_write_raw_P(space[now_frame_space], FRAME_SIZE);
                     return;
                 case KC_DELETE:
+                    if(last_animation != DELETE) {
+                        current_animation = DELETE;
+                        return;
+                    }
+                    oled_write_raw_P(delete[now_frame_delete], FRAME_SIZE);
+                    return;
+                case KC_BSPC:
                     if(last_animation != DELETE) {
                         current_animation = DELETE;
                         return;
