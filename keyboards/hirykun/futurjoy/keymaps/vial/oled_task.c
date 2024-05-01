@@ -93,7 +93,7 @@ void oled_animation(void) {
             case DELETE:
                 memcpy(transition_animation, delete[MAX_FRAME(delete) - 1], FRAME_SIZE);
                 break;
-            case UP:
+            case UP_:
                 memcpy(transition_animation, up[MAX_FRAME(up) - 1], FRAME_SIZE);
                 break;
             case DOWN:
@@ -141,7 +141,7 @@ void oled_animation(void) {
             case DELETE:
                 memcpy(transition_animation, delete[now_frame_delete], FRAME_SIZE);
                 break;
-            case UP:
+            case UP_:
                 memcpy(transition_animation, up[now_frame_up], FRAME_SIZE);
                 break;
             case DOWN:
@@ -311,8 +311,8 @@ void oled_animation(void) {
                     oled_write_raw_P(delete[now_frame_delete], FRAME_SIZE);
                     return;
                 case KC_UP:
-                    if(last_animation != UP) {
-                        current_animation = UP;
+                    if(last_animation != UP_) {
+                        current_animation = UP_;
                         return;
                     }
                     oled_write_raw_P(up[now_frame_up], FRAME_SIZE);

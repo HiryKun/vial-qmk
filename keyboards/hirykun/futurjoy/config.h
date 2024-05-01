@@ -21,7 +21,7 @@
 //EEPROM配置
 //此数值不影响固件大小，但如果超出 Flash 导致越界，第一次刷入固件的键盘讲无法正常运行
 //对于此键盘，不要改大此数据
-#define WEAR_LEVELING_LOGICAL_SIZE 4096
-#define WEAR_LEVELING_BACKING_SIZE 8192
+#define WEAR_LEVELING_LOGICAL_SIZE 2048
+#define WEAR_LEVELING_BACKING_SIZE 4096
 
 #define USB_POLLING_INTERVAL_MS 1
