@@ -25,7 +25,9 @@
         "initializer_list": "c",
         "span": "c",
         "regex": "c",
-        "valarray": "c"
+        "valarray": "c",
+        "future": "c",
+        "system_error": "c"
     },
     "[markdown]": {
         "editor.trimAutoWhitespace": false,
