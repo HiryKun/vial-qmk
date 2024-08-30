@@ -69,6 +69,9 @@ uint8_t g_rgb_frame_buffer[MATRIX_ROWS][MATRIX_COLS] = {{0}};
 #ifdef RGB_MATRIX_KEYREACTIVE_ENABLED
 last_hit_t g_last_hit_tracker;
 #endif // RGB_MATRIX_KEYREACTIVE_ENABLED
+#ifdef REACTIVE_CUSTOM
+uint8_t current_led_count = 0xFF;
+#endif
 
 // internals
 static bool            suspend_state     = false;
@@ -204,6 +207,15 @@ void process_rgb_matrix(uint8_t row, uint8_t col, bool pressed) {
         }
     }
 #endif // defined(RGB_MATRIX_FRAMEBUFFER_EFFECTS) && defined(ENABLE_RGB_MATRIX_TYPING_HEATMAP)
+
+#if defined REACTIVE_CUSTOM
+#    if defined(RGB_MATRIX_KEYRELEASES)
+    if (!pressed)
+#    else
+    if (pressed)
+#    endif // defined(RGB_MATRIX_KEYRELEASES)
+    current_led_count = g_led_config.matrix_co[row][col];
+#endif
 }
 
 void rgb_matrix_test(void) {

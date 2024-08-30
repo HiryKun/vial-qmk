@@ -27,7 +27,9 @@
         "regex": "c",
         "valarray": "c",
         "future": "c",
-        "system_error": "c"
+        "system_error": "c",
+        "iterator": "c",
+        "variant": "c"
     },
     "[markdown]": {
         "editor.trimAutoWhitespace": false,

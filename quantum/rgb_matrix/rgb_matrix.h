@@ -282,3 +282,7 @@ extern uint8_t g_rgb_frame_buffer[MATRIX_ROWS][MATRIX_COLS];
 #    undef RGB_MATRIX_MAXIMUM_BRIGHTNESS
 #    define RGB_MATRIX_MAXIMUM_BRIGHTNESS UINT8_MAX
 #endif
+
+#ifdef REACTIVE_CUSTOM
+extern uint8_t current_led_count;
+#endif
