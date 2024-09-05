@@ -1,0 +1,13 @@
+/* SPDX-License-Identifier: GPL-2.0-or-later */
+
+#pragma once
+
+#define VIAL_KEYBOARD_UID {0x38, 0xD0, 0x81, 0xB3, 0x4E, 0xE2, 0xA7, 0x2D}
+#define DYNAMIC_KEYMAP_LAYER_COUNT 8
+
+#define I2C_DRIVER I2CD2
+#define I2C1_SCL_PIN B10
+#define I2C1_SDA_PIN B11
+#define I2C1_CLOCK_SPEED 400000
+#define I2C1_DUTY_CYCLE FAST_DUTY_CYCLE_2
+#define OLED_TIMEOUT 300000
