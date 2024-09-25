@@ -41,5 +41,6 @@
     },
     "clangd.arguments": [
         "--header-insertion=never"
-    ]
+    ],
+    "cmake.sourceDirectory": "D:/vial-qmk/lib/googletest"
 }

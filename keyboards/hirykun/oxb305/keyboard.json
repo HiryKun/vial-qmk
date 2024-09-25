@@ -1,7 +1,29 @@
 {
-    "keyboard_name": "",
+    "manufacturer": "HiryKun",
+    "keyboard_name": "OXB305",
+    "maintainer": "HiryKun",
+    "bootloader": "stm32duino",
+    "diode_direction": "COL2ROW",
+    "features": {
+        "bootmagic": true,
+        "command": false,
+        "console": false,
+        "extrakey": true,
+        "mousekey": true,
+        "nkro": true,
+        "rgb_matrix": true
+    },
+    "matrix_pins": {
+        "cols": ["B6", "B7", "B8", "A4", "A5", "B9", "A6", "A7", "B0", "B13", "B12", "B15", "B14", "A8", "A15"],
+        "rows": ["A9", "B5", "B4", "B3", "B1"]
+    },
+    "processor": "STM32F103",
     "url": "",
-    "maintainer": "qmk",
+    "usb": {
+        "device_version": "1.0.0",
+        "pid": "0x0100",
+        "vid": "0xB75C"
+    },
     "layouts": {
         "LAYOUT": {
             "layout": [
@@ -73,5 +95,16 @@
                 {"matrix": [4,14], "x": 15, "y": 4}
             ]
         }
+    },
+    "rgb_matrix": {
+        "driver": "ws2812",
+        "sleep": true,
+        "layout": [
+            {"x": 0, "y": 0, "flags": 8},
+        ]
+    },
+    "ws2812": {
+        "driver": "pwm",
+        "pin": "A3"
     }
 }
