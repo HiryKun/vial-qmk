@@ -29,6 +29,7 @@
     },
     "processor": "STM32F103",
     "rgb_matrix": {
+        "sleep": true,
         "animations": {
             "alphas_mods": true,
             "band_pinwheel_sat": true,

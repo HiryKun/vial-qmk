@@ -4,6 +4,9 @@
     "maintainer": "HiryKun",
     "bootloader": "stm32duino",
     "diode_direction": "COL2ROW",
+    "build" : {
+        "lto" : true
+    },
     "encoder": {
         "rotary": [
             {"pin_a": "A9", "pin_b": "A8", "resolution": 4}
