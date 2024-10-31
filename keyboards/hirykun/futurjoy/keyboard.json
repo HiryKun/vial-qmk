@@ -20,6 +20,9 @@
         "cols": ["A8", "B15", "B14", "B13", "B12", "B11", "B10", "B1", "B0", "A7", "A6", "A5", "A4", "A3", "C12"],
         "rows": ["C11", "C10", "A15", "C2", "C1", "C0"]
     },
+    "build": {
+        "lto": true
+    },
     "processor": "STM32F103",
     "rgb_matrix": {
         "animations": {

@@ -167,7 +167,8 @@
             {"flags": 4, "matrix" : [0, 1] , "x":20, "y":0},
             {"flags": 4, "matrix" : [0, 0] , "x":0, "y":0}
         ],
-        "max_brightness": 170
+        "max_brightness": 170,
+        "sleep": true
     },
     "ws2812": {
         "pin": "GP16",
