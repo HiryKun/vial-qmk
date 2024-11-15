@@ -76,6 +76,7 @@ CMakeLists.txt
 .vscode/launch.json
 .vscode/tasks.json
 .vscode/temp.sql
+.vscode/settings.json
 tags
 
 # Ignore image/font files
@@ -116,3 +117,8 @@ user_song_list.h
 compile_commands.json
 .clangd/
 .cache/
+
+#temp
+kle.txt
+info.json
+keyboard-layout.json
