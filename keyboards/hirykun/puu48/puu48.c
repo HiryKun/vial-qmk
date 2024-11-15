@@ -50,10 +50,10 @@ bool dip_switch_update_kb(uint8_t index, bool active) {
         break;
     case 5:
         if(active) {
-            register_code16(5);
+            register_code16(KC_6);
         }
         else {
-            unregister_code16(5);
+            unregister_code16(KC_6);
         }
         break;
     default:
