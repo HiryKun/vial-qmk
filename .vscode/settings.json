@@ -29,7 +29,9 @@
         "future": "c",
         "system_error": "c",
         "iterator": "c",
-        "variant": "c"
+        "variant": "c",
+        "compare": "c",
+        "cstdint": "c"
     },
     "[markdown]": {
         "editor.trimAutoWhitespace": false,

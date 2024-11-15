@@ -1,0 +1,3 @@
+#APM32
+#DFU_SUFFIX_ARGS = -v FFFF -p FFFF
+

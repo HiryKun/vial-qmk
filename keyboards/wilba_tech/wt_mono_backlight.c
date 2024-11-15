@@ -57,6 +57,8 @@ uint32_t g_tick = 0;
 // Ticks since any key was last hit.
 uint32_t g_any_key_hit = 0;
 
+bool key_pressing = false;
+
 void backlight_init_drivers(void)
 {
     is31fl3736_init_drivers();
@@ -179,6 +181,8 @@ defined(MONO_BACKLIGHT_WT80_A)
         // SW7,CS7 = (6*8+6) = 54
         is31fl3736_set_value(54, 255);
     }
+    if (key_pressing) is31fl3736_set_value(40, 255);
+    else is31fl3736_set_value(40, 0);
 #endif
 #if defined(MONO_BACKLIGHT_WT75_C)
     if ( host_keyboard_led_state().scroll_lock ) {
@@ -360,7 +364,9 @@ bool process_record_backlight(uint16_t keycode, keyrecord_t *record)
     if ( record->event.pressed )
     {
         backlight_set_key_hit( record->event.key.row, record->event.key.col );
+        key_pressing = true;
     }
+    else key_pressing = false;
 
     switch(keycode)
     {
