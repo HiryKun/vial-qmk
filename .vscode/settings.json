@@ -31,7 +31,10 @@
         "iterator": "c",
         "variant": "c",
         "compare": "c",
-        "cstdint": "c"
+        "cstdint": "c",
+        "chrono": "c",
+        "functional": "c",
+        "random": "c"
     },
     "[markdown]": {
         "editor.trimAutoWhitespace": false,
@@ -44,5 +47,6 @@
     "clangd.arguments": [
         "--header-insertion=never"
     ],
-    "cmake.sourceDirectory": "D:/vial-qmk/lib/googletest"
+    "cmake.sourceDirectory": "D:/vial-qmk/lib/googletest",
+    "marscode.chatLanguage": "cn"
 }
