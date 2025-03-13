@@ -1,7 +1,66 @@
 {
-    "keyboard_name": "",
+    "manufacturer": "HiryKun",
+    "keyboard_name": "typewriter",
+    "maintainer": "HiryKun",
+    "bootloader": "stm32duino",
+    "diode_direction": "COL2ROW",
+    "features": {
+        "bootmagic": true,
+        "command": false,
+        "console": false,
+        "extrakey": true,
+        "mousekey": true,
+        "nkro": true,
+        "rgb_matrix": true,
+        "haptic": true,
+        "audio": true
+    },
+    "matrix_pins": {
+        "cols": ["C11", "C10", "A15", "B8", "C8", "C7", "C6", "B15", "B14", "B13", "A9", "A10", "C13", "C15", "C14", "C0", "C1", "A4", "A5", "A6", "A7"],
+        "rows": ["B9", "B12", "C2", "C3", "A0", "A1"]
+    },
+    "processor": "STM32F103",
     "url": "",
-    "maintainer": "qmk",
+    "usb": {
+        "device_version": "1.0.0",
+        "pid": "0x0102",
+        "vid": "0xB75C"
+    },
+    "audio": {
+        "driver": "pwm_hardware"
+    },
+    "rgb_matrix": {
+        "driver": "ws2812",
+        "max_brightness": 210,
+        "sleep": true,
+        "animations": {
+            "alphas_mods": true,
+            "band_sat": true,
+            "band_val": true,
+            "breathing": true,
+            "cycle_all": true,
+            "cycle_left_right": true,
+            "cycle_out_in": true,
+            "cycle_out_in_dual": true,
+            "gradient_left_right": true,
+            "hue_breathing": true,
+            "multisplash": true,
+            "pixel_flow": true,
+            "pixel_fractal": true,
+            "pixel_rain": true,
+            "solid_multisplash": true
+        },
+        "layout": [
+            {"x": 80, "y": 32, "flags": 4},
+            {"x": 196, "y": 32, "flags": 4},
+            {"x": 148, "y": 32, "flags": 4},
+            {"x": 144, "y": 32, "flags": 4}
+        ]
+    },
+    "ws2812": {
+        "driver": "pwm",
+        "pin": "A3"
+    },
     "layouts": {
         "LAYOUT": {
             "layout": [
