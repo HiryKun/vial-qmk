@@ -47,6 +47,6 @@
     "clangd.arguments": [
         "--header-insertion=never"
     ],
-    "cmake.sourceDirectory": "D:/vial-qmk/lib/googletest",
+    "cmake.sourceDirectory": "/home/hirykun/vial-qmk/lib/googletest",
     "marscode.chatLanguage": "cn"
 }
